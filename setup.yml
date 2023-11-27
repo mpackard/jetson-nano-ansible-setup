@@ -1,0 +1,24 @@
+---
+- name: Jetson Nano Setup
+  hosts: localhost
+  connection: local 
+  become: yes
+
+  tasks:
+
+  - shell: apt dist-upgrade -y
+
+  - shell: apt update -y
+
+  - name: packages
+    apt:
+      state: present
+      update_cache: true
+      pkg:
+      - nvidia-container
+      - nvidia-jetpack
+      - tmux 
+      - ansible 
+      - git 
+      - vim
+
